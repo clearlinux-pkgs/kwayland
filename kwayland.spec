@@ -6,7 +6,7 @@
 #
 Name     : kwayland
 Version  : 5.49.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/frameworks/5.49/kwayland-5.49.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.49/kwayland-5.49.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.49/kwayland-5.49.0.tar.xz.sig
@@ -15,6 +15,7 @@ Group    : Development/Tools
 License  : LGPL-2.1
 Requires: kwayland-lib
 Requires: kwayland-license
+Requires: kwayland-data
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : qtbase-dev qtbase-extras mesa-dev
@@ -25,10 +26,19 @@ BuildRequires : wayland-dev
 # KWayland
 KWayland is a Qt-style API to interact with the wayland-client and wayland-server API.
 
+%package data
+Summary: data components for the kwayland package.
+Group: Data
+
+%description data
+data components for the kwayland package.
+
+
 %package dev
 Summary: dev components for the kwayland package.
 Group: Development
 Requires: kwayland-lib
+Requires: kwayland-data
 Provides: kwayland-devel
 
 %description dev
@@ -38,6 +48,7 @@ dev components for the kwayland package.
 %package lib
 Summary: lib components for the kwayland package.
 Group: Libraries
+Requires: kwayland-data
 Requires: kwayland-license
 
 %description lib
@@ -60,7 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1534093499
+export SOURCE_DATE_EPOCH=1535433436
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -68,7 +79,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1534093499
+export SOURCE_DATE_EPOCH=1535433436
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kwayland
 cp COPYING.LIB %{buildroot}/usr/share/doc/kwayland/COPYING.LIB
@@ -79,6 +90,10 @@ popd
 %files
 %defattr(-,root,root,-)
 /usr/lib64/libexec/org-kde-kf5-kwayland-testserver
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/xdg/org_kde_kwayland.categories
 
 %files dev
 %defattr(-,root,root,-)
