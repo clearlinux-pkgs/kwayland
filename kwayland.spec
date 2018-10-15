@@ -5,22 +5,23 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kwayland
-Version  : 5.50.0
-Release  : 5
-URL      : https://download.kde.org/stable/frameworks/5.50/kwayland-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/kwayland-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/kwayland-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 6
+URL      : https://download.kde.org/stable/frameworks/5.51/kwayland-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/kwayland-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/kwayland-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: kwayland-lib
-Requires: kwayland-license
-Requires: kwayland-data
+Requires: kwayland-data = %{version}-%{release}
+Requires: kwayland-lib = %{version}-%{release}
+Requires: kwayland-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
-BuildRequires : wayland
-BuildRequires : wayland-dev
+BuildRequires : extra-cmake-modules pkgconfig(egl)
+BuildRequires : extra-cmake-modules pkgconfig(wayland-client)
+BuildRequires : extra-cmake-modules wayland
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : weston-dev weston
 
 %description
@@ -38,9 +39,9 @@ data components for the kwayland package.
 %package dev
 Summary: dev components for the kwayland package.
 Group: Development
-Requires: kwayland-lib
-Requires: kwayland-data
-Provides: kwayland-devel
+Requires: kwayland-lib = %{version}-%{release}
+Requires: kwayland-data = %{version}-%{release}
+Provides: kwayland-devel = %{version}-%{release}
 
 %description dev
 dev components for the kwayland package.
@@ -49,8 +50,8 @@ dev components for the kwayland package.
 %package lib
 Summary: lib components for the kwayland package.
 Group: Libraries
-Requires: kwayland-data
-Requires: kwayland-license
+Requires: kwayland-data = %{version}-%{release}
+Requires: kwayland-license = %{version}-%{release}
 
 %description lib
 lib components for the kwayland package.
@@ -65,25 +66,25 @@ license components for the kwayland package.
 
 
 %prep
-%setup -q -n kwayland-5.50.0
+%setup -q -n kwayland-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536436363
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539618152
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536436363
+export SOURCE_DATE_EPOCH=1539618152
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kwayland
-cp COPYING.LIB %{buildroot}/usr/share/doc/kwayland/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/kwayland
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -205,10 +206,10 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5WaylandClient.so.5
-/usr/lib64/libKF5WaylandClient.so.5.50.0
+/usr/lib64/libKF5WaylandClient.so.5.51.0
 /usr/lib64/libKF5WaylandServer.so.5
-/usr/lib64/libKF5WaylandServer.so.5.50.0
+/usr/lib64/libKF5WaylandServer.so.5.51.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kwayland/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kwayland/COPYING.LIB
