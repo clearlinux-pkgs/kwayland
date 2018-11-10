@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kwayland
-Version  : 5.51.0
-Release  : 7
-URL      : https://download.kde.org/stable/frameworks/5.51/kwayland-5.51.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.51/kwayland-5.51.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.51/kwayland-5.51.0.tar.xz.sig
+Version  : 5.52.0
+Release  : 8
+URL      : https://download.kde.org/stable/frameworks/5.52/kwayland-5.52.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.52/kwayland-5.52.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.52/kwayland-5.52.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -22,13 +22,19 @@ BuildRequires : extra-cmake-modules pkgconfig(egl)
 BuildRequires : extra-cmake-modules pkgconfig(wayland-client)
 BuildRequires : extra-cmake-modules wayland
 BuildRequires : qtbase-dev mesa-dev
-BuildRequires : wayland
-BuildRequires : wayland-dev
 BuildRequires : weston-dev weston
 
 %description
 # KWayland
 KWayland is a Qt-style API to interact with the wayland-client and wayland-server API.
+
+%package abi
+Summary: abi components for the kwayland package.
+Group: Default
+
+%description abi
+abi components for the kwayland package.
+
 
 %package data
 Summary: data components for the kwayland package.
@@ -68,14 +74,14 @@ license components for the kwayland package.
 
 
 %prep
-%setup -q -n kwayland-5.51.0
+%setup -q -n kwayland-5.52.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539641139
+export SOURCE_DATE_EPOCH=1541872921
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -83,7 +89,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539641139
+export SOURCE_DATE_EPOCH=1541872921
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/COPYING.LIB
@@ -94,6 +100,11 @@ popd
 %files
 %defattr(-,root,root,-)
 /usr/lib64/libexec/org-kde-kf5-kwayland-testserver
+
+%files abi
+%defattr(-,root,root,-)
+/usr/share/abi/libKF5WaylandClient.so.5.52.0.abi
+/usr/share/abi/libKF5WaylandServer.so.5.52.0.abi
 
 %files data
 %defattr(-,root,root,-)
@@ -124,6 +135,7 @@ popd
 /usr/include/KF5/KWayland/Client/outputdevice.h
 /usr/include/KF5/KWayland/Client/outputmanagement.h
 /usr/include/KF5/KWayland/Client/plasmashell.h
+/usr/include/KF5/KWayland/Client/plasmavirtualdesktop.h
 /usr/include/KF5/KWayland/Client/plasmawindowmanagement.h
 /usr/include/KF5/KWayland/Client/plasmawindowmodel.h
 /usr/include/KF5/KWayland/Client/pointer.h
@@ -173,6 +185,7 @@ popd
 /usr/include/KF5/KWayland/Server/outputdevice_interface.h
 /usr/include/KF5/KWayland/Server/outputmanagement_interface.h
 /usr/include/KF5/KWayland/Server/plasmashell_interface.h
+/usr/include/KF5/KWayland/Server/plasmavirtualdesktop_interface.h
 /usr/include/KF5/KWayland/Server/plasmawindowmanagement_interface.h
 /usr/include/KF5/KWayland/Server/pointer_interface.h
 /usr/include/KF5/KWayland/Server/pointerconstraints_interface.h
@@ -208,9 +221,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5WaylandClient.so.5
-/usr/lib64/libKF5WaylandClient.so.5.51.0
+/usr/lib64/libKF5WaylandClient.so.5.52.0
 /usr/lib64/libKF5WaylandServer.so.5
-/usr/lib64/libKF5WaylandServer.so.5.51.0
+/usr/lib64/libKF5WaylandServer.so.5.52.0
 
 %files license
 %defattr(0644,root,root,0755)
