@@ -6,7 +6,7 @@
 #
 Name     : kwayland
 Version  : 5.52.0
-Release  : 8
+Release  : 9
 URL      : https://download.kde.org/stable/frameworks/5.52/kwayland-5.52.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.52/kwayland-5.52.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.52/kwayland-5.52.0.tar.xz.sig
@@ -22,19 +22,13 @@ BuildRequires : extra-cmake-modules pkgconfig(egl)
 BuildRequires : extra-cmake-modules pkgconfig(wayland-client)
 BuildRequires : extra-cmake-modules wayland
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : wayland
+BuildRequires : wayland-dev
 BuildRequires : weston-dev weston
 
 %description
 # KWayland
 KWayland is a Qt-style API to interact with the wayland-client and wayland-server API.
-
-%package abi
-Summary: abi components for the kwayland package.
-Group: Default
-
-%description abi
-abi components for the kwayland package.
-
 
 %package data
 Summary: data components for the kwayland package.
@@ -81,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541872921
+export SOURCE_DATE_EPOCH=1542745546
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -89,7 +83,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541872921
+export SOURCE_DATE_EPOCH=1542745546
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/COPYING.LIB
@@ -100,11 +94,6 @@ popd
 %files
 %defattr(-,root,root,-)
 /usr/lib64/libexec/org-kde-kf5-kwayland-testserver
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libKF5WaylandClient.so.5.52.0.abi
-/usr/share/abi/libKF5WaylandServer.so.5.52.0.abi
 
 %files data
 %defattr(-,root,root,-)
