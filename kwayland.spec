@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kwayland
-Version  : 5.65.0
-Release  : 27
-URL      : https://download.kde.org/stable/frameworks/5.65/kwayland-5.65.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.65/kwayland-5.65.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.65/kwayland-5.65.0.tar.xz.sig
+Version  : 5.66.0
+Release  : 28
+URL      : https://download.kde.org/stable/frameworks/5.66/kwayland-5.66.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.66/kwayland-5.66.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.66/kwayland-5.66.0.tar.xz.sig
 Summary  : Qt-style Client and Server library wrapper for the Wayland libraries
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -70,15 +70,15 @@ license components for the kwayland package.
 
 
 %prep
-%setup -q -n kwayland-5.65.0
-cd %{_builddir}/kwayland-5.65.0
+%setup -q -n kwayland-5.66.0
+cd %{_builddir}/kwayland-5.66.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576519091
+export SOURCE_DATE_EPOCH=1578938043
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -95,10 +95,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576519091
+export SOURCE_DATE_EPOCH=1578938043
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland
-cp %{_builddir}/kwayland-5.65.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kwayland-5.66.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -228,9 +228,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5WaylandClient.so.5
-/usr/lib64/libKF5WaylandClient.so.5.65.0
+/usr/lib64/libKF5WaylandClient.so.5.66.0
 /usr/lib64/libKF5WaylandServer.so.5
-/usr/lib64/libKF5WaylandServer.so.5.65.0
+/usr/lib64/libKF5WaylandServer.so.5.66.0
 
 %files license
 %defattr(0644,root,root,0755)
