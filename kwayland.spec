@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kwayland
-Version  : 5.69.0
-Release  : 31
-URL      : https://download.kde.org/stable/frameworks/5.69/kwayland-5.69.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.69/kwayland-5.69.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.69/kwayland-5.69.0.tar.xz.sig
-Summary  : Qt-style Client and Server library wrapper for the Wayland libraries
+Version  : 5.70.0
+Release  : 32
+URL      : https://download.kde.org/stable/frameworks/5.70/kwayland-5.70.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.70/kwayland-5.70.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.70/kwayland-5.70.0.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-3.0
 Requires: kwayland-data = %{version}-%{release}
@@ -22,8 +22,10 @@ BuildRequires : extra-cmake-modules pkgconfig(egl)
 BuildRequires : extra-cmake-modules pkgconfig(wayland-client)
 BuildRequires : extra-cmake-modules qtwayland-dev
 BuildRequires : extra-cmake-modules wayland
+BuildRequires : extra-cmake-modules-data
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(wayland-protocols)
+BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : weston-dev weston
 
@@ -45,7 +47,6 @@ Group: Development
 Requires: kwayland-lib = %{version}-%{release}
 Requires: kwayland-data = %{version}-%{release}
 Provides: kwayland-devel = %{version}-%{release}
-Requires: kwayland = %{version}-%{release}
 Requires: kwayland = %{version}-%{release}
 
 %description dev
@@ -71,36 +72,35 @@ license components for the kwayland package.
 
 
 %prep
-%setup -q -n kwayland-5.69.0
-cd %{_builddir}/kwayland-5.69.0
+%setup -q -n kwayland-5.70.0
+cd %{_builddir}/kwayland-5.70.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586880971
+export SOURCE_DATE_EPOCH=1589212896
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1586880971
+export SOURCE_DATE_EPOCH=1589212896
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland
-cp %{_builddir}/kwayland-5.69.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kwayland-5.69.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-5.70.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kwayland-5.70.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -231,9 +231,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5WaylandClient.so.5
-/usr/lib64/libKF5WaylandClient.so.5.69.0
+/usr/lib64/libKF5WaylandClient.so.5.70.0
 /usr/lib64/libKF5WaylandServer.so.5
-/usr/lib64/libKF5WaylandServer.so.5.69.0
+/usr/lib64/libKF5WaylandServer.so.5.70.0
 
 %files license
 %defattr(0644,root,root,0755)
