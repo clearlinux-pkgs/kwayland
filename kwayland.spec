@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kwayland
-Version  : 5.71.0
-Release  : 33
-URL      : https://download.kde.org/stable/frameworks/5.71/kwayland-5.71.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.71/kwayland-5.71.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.71/kwayland-5.71.0.tar.xz.sig
+Version  : 5.73.0
+Release  : 34
+URL      : https://download.kde.org/stable/frameworks/5.73/kwayland-5.73.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.73/kwayland-5.73.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.73/kwayland-5.73.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-3.0
@@ -25,6 +25,7 @@ BuildRequires : extra-cmake-modules wayland
 BuildRequires : extra-cmake-modules-data
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(wayland-protocols)
+BuildRequires : plasma-wayland-protocols-dev
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : weston-dev weston
@@ -72,15 +73,15 @@ license components for the kwayland package.
 
 
 %prep
-%setup -q -n kwayland-5.71.0
-cd %{_builddir}/kwayland-5.71.0
+%setup -q -n kwayland-5.73.0
+cd %{_builddir}/kwayland-5.73.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592241501
+export SOURCE_DATE_EPOCH=1597711112
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -92,15 +93,15 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592241501
+export SOURCE_DATE_EPOCH=1597711112
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland
-cp %{_builddir}/kwayland-5.71.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kwayland-5.71.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-5.73.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kwayland-5.73.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -112,6 +113,7 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/qlogging-categories5/kwayland.categories
+/usr/share/qlogging-categories5/kwayland.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
@@ -231,9 +233,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5WaylandClient.so.5
-/usr/lib64/libKF5WaylandClient.so.5.71.0
+/usr/lib64/libKF5WaylandClient.so.5.73.0
 /usr/lib64/libKF5WaylandServer.so.5
-/usr/lib64/libKF5WaylandServer.so.5.71.0
+/usr/lib64/libKF5WaylandServer.so.5.73.0
 
 %files license
 %defattr(0644,root,root,0755)
