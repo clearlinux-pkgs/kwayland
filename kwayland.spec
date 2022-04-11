@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kwayland
-Version  : 5.92.0
-Release  : 51
-URL      : https://download.kde.org/stable/frameworks/5.92/kwayland-5.92.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.92/kwayland-5.92.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.92/kwayland-5.92.0.tar.xz.sig
+Version  : 5.93.0
+Release  : 52
+URL      : https://download.kde.org/stable/frameworks/5.93/kwayland-5.93.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.93/kwayland-5.93.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.93/kwayland-5.93.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.1 LGPL-3.0 MIT
@@ -71,15 +71,15 @@ license components for the kwayland package.
 
 
 %prep
-%setup -q -n kwayland-5.92.0
-cd %{_builddir}/kwayland-5.92.0
+%setup -q -n kwayland-5.93.0
+cd %{_builddir}/kwayland-5.93.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1647283869
+export SOURCE_DATE_EPOCH=1649700698
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -95,17 +95,17 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1647283869
+export SOURCE_DATE_EPOCH=1649700698
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland
-cp %{_builddir}/kwayland-5.92.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kwayland-5.92.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kwayland/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/kwayland-5.92.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/kwayland-5.92.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/kwayland-5.92.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kwayland-5.92.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-5.92.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-5.92.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/kwayland-5.93.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kwayland-5.93.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kwayland/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/kwayland-5.93.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/kwayland-5.93.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/kwayland-5.93.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kwayland-5.93.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-5.93.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-5.93.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 pushd clr-build
 %make_install
 popd
@@ -121,56 +121,56 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/KF5/KWayland/Client/appmenu.h
-/usr/include/KF5/KWayland/Client/blur.h
-/usr/include/KF5/KWayland/Client/buffer.h
-/usr/include/KF5/KWayland/Client/compositor.h
-/usr/include/KF5/KWayland/Client/connection_thread.h
-/usr/include/KF5/KWayland/Client/contrast.h
-/usr/include/KF5/KWayland/Client/datadevice.h
-/usr/include/KF5/KWayland/Client/datadevicemanager.h
-/usr/include/KF5/KWayland/Client/dataoffer.h
-/usr/include/KF5/KWayland/Client/datasource.h
-/usr/include/KF5/KWayland/Client/dpms.h
-/usr/include/KF5/KWayland/Client/event_queue.h
-/usr/include/KF5/KWayland/Client/fakeinput.h
-/usr/include/KF5/KWayland/Client/fullscreen_shell.h
-/usr/include/KF5/KWayland/Client/idle.h
-/usr/include/KF5/KWayland/Client/idleinhibit.h
-/usr/include/KF5/KWayland/Client/keyboard.h
-/usr/include/KF5/KWayland/Client/keystate.h
-/usr/include/KF5/KWayland/Client/kwaylandclient_export.h
-/usr/include/KF5/KWayland/Client/output.h
-/usr/include/KF5/KWayland/Client/outputconfiguration.h
-/usr/include/KF5/KWayland/Client/outputdevice.h
-/usr/include/KF5/KWayland/Client/outputmanagement.h
-/usr/include/KF5/KWayland/Client/plasmashell.h
-/usr/include/KF5/KWayland/Client/plasmavirtualdesktop.h
-/usr/include/KF5/KWayland/Client/plasmawindowmanagement.h
-/usr/include/KF5/KWayland/Client/plasmawindowmodel.h
-/usr/include/KF5/KWayland/Client/pointer.h
-/usr/include/KF5/KWayland/Client/pointerconstraints.h
-/usr/include/KF5/KWayland/Client/pointergestures.h
-/usr/include/KF5/KWayland/Client/region.h
-/usr/include/KF5/KWayland/Client/registry.h
-/usr/include/KF5/KWayland/Client/relativepointer.h
-/usr/include/KF5/KWayland/Client/remote_access.h
-/usr/include/KF5/KWayland/Client/seat.h
-/usr/include/KF5/KWayland/Client/server_decoration.h
-/usr/include/KF5/KWayland/Client/server_decoration_palette.h
-/usr/include/KF5/KWayland/Client/shadow.h
-/usr/include/KF5/KWayland/Client/shell.h
-/usr/include/KF5/KWayland/Client/shm_pool.h
-/usr/include/KF5/KWayland/Client/slide.h
-/usr/include/KF5/KWayland/Client/subcompositor.h
-/usr/include/KF5/KWayland/Client/subsurface.h
-/usr/include/KF5/KWayland/Client/surface.h
-/usr/include/KF5/KWayland/Client/textinput.h
-/usr/include/KF5/KWayland/Client/touch.h
-/usr/include/KF5/KWayland/Client/xdgdecoration.h
-/usr/include/KF5/KWayland/Client/xdgforeign.h
-/usr/include/KF5/KWayland/Client/xdgoutput.h
-/usr/include/KF5/KWayland/Client/xdgshell.h
+/usr/include/KF5/KWayland/KWayland/Client/appmenu.h
+/usr/include/KF5/KWayland/KWayland/Client/blur.h
+/usr/include/KF5/KWayland/KWayland/Client/buffer.h
+/usr/include/KF5/KWayland/KWayland/Client/compositor.h
+/usr/include/KF5/KWayland/KWayland/Client/connection_thread.h
+/usr/include/KF5/KWayland/KWayland/Client/contrast.h
+/usr/include/KF5/KWayland/KWayland/Client/datadevice.h
+/usr/include/KF5/KWayland/KWayland/Client/datadevicemanager.h
+/usr/include/KF5/KWayland/KWayland/Client/dataoffer.h
+/usr/include/KF5/KWayland/KWayland/Client/datasource.h
+/usr/include/KF5/KWayland/KWayland/Client/dpms.h
+/usr/include/KF5/KWayland/KWayland/Client/event_queue.h
+/usr/include/KF5/KWayland/KWayland/Client/fakeinput.h
+/usr/include/KF5/KWayland/KWayland/Client/fullscreen_shell.h
+/usr/include/KF5/KWayland/KWayland/Client/idle.h
+/usr/include/KF5/KWayland/KWayland/Client/idleinhibit.h
+/usr/include/KF5/KWayland/KWayland/Client/keyboard.h
+/usr/include/KF5/KWayland/KWayland/Client/keystate.h
+/usr/include/KF5/KWayland/KWayland/Client/kwaylandclient_export.h
+/usr/include/KF5/KWayland/KWayland/Client/output.h
+/usr/include/KF5/KWayland/KWayland/Client/outputconfiguration.h
+/usr/include/KF5/KWayland/KWayland/Client/outputdevice.h
+/usr/include/KF5/KWayland/KWayland/Client/outputmanagement.h
+/usr/include/KF5/KWayland/KWayland/Client/plasmashell.h
+/usr/include/KF5/KWayland/KWayland/Client/plasmavirtualdesktop.h
+/usr/include/KF5/KWayland/KWayland/Client/plasmawindowmanagement.h
+/usr/include/KF5/KWayland/KWayland/Client/plasmawindowmodel.h
+/usr/include/KF5/KWayland/KWayland/Client/pointer.h
+/usr/include/KF5/KWayland/KWayland/Client/pointerconstraints.h
+/usr/include/KF5/KWayland/KWayland/Client/pointergestures.h
+/usr/include/KF5/KWayland/KWayland/Client/region.h
+/usr/include/KF5/KWayland/KWayland/Client/registry.h
+/usr/include/KF5/KWayland/KWayland/Client/relativepointer.h
+/usr/include/KF5/KWayland/KWayland/Client/remote_access.h
+/usr/include/KF5/KWayland/KWayland/Client/seat.h
+/usr/include/KF5/KWayland/KWayland/Client/server_decoration.h
+/usr/include/KF5/KWayland/KWayland/Client/server_decoration_palette.h
+/usr/include/KF5/KWayland/KWayland/Client/shadow.h
+/usr/include/KF5/KWayland/KWayland/Client/shell.h
+/usr/include/KF5/KWayland/KWayland/Client/shm_pool.h
+/usr/include/KF5/KWayland/KWayland/Client/slide.h
+/usr/include/KF5/KWayland/KWayland/Client/subcompositor.h
+/usr/include/KF5/KWayland/KWayland/Client/subsurface.h
+/usr/include/KF5/KWayland/KWayland/Client/surface.h
+/usr/include/KF5/KWayland/KWayland/Client/textinput.h
+/usr/include/KF5/KWayland/KWayland/Client/touch.h
+/usr/include/KF5/KWayland/KWayland/Client/xdgdecoration.h
+/usr/include/KF5/KWayland/KWayland/Client/xdgforeign.h
+/usr/include/KF5/KWayland/KWayland/Client/xdgoutput.h
+/usr/include/KF5/KWayland/KWayland/Client/xdgshell.h
 /usr/include/KF5/KWayland/Server/appmenu_interface.h
 /usr/include/KF5/KWayland/Server/blur_interface.h
 /usr/include/KF5/KWayland/Server/buffer_interface.h
@@ -238,9 +238,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5WaylandClient.so.5
-/usr/lib64/libKF5WaylandClient.so.5.92.0
+/usr/lib64/libKF5WaylandClient.so.5.93.0
 /usr/lib64/libKF5WaylandServer.so.5
-/usr/lib64/libKF5WaylandServer.so.5.92.0
+/usr/lib64/libKF5WaylandServer.so.5.93.0
 
 %files license
 %defattr(0644,root,root,0755)
