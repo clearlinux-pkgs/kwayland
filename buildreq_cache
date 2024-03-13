@@ -1,2 +1,3 @@
-5.115.0
-weston-dev weston
+6.0.2
+qt6wayland-dev
+wayland-protocols-dev plasma-wayland-protocols-dev

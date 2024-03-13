@@ -1,5 +1,5 @@
 PKG_NAME := kwayland
-URL = https://download.kde.org/stable/frameworks/5.115/kwayland-5.115.0.tar.xz
+URL = https://download.kde.org/stable/plasma/6.0.2/kwayland-6.0.2.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
