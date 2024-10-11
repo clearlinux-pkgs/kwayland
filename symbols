@@ -257,6 +257,7 @@ libKWaylandClient.so.6:KWayland::Client::PlasmaVirtualDesktopManagement::~Plasma
 libKWaylandClient.so.6:KWayland::Client::PlasmaWindow::activeChanged()
 libKWaylandClient.so.6:KWayland::Client::PlasmaWindow::appIdChanged()
 libKWaylandClient.so.6:KWayland::Client::PlasmaWindow::applicationMenuChanged()
+libKWaylandClient.so.6:KWayland::Client::PlasmaWindow::clientGeometryChanged()
 libKWaylandClient.so.6:KWayland::Client::PlasmaWindow::closeableChanged()
 libKWaylandClient.so.6:KWayland::Client::PlasmaWindow::demandsAttentionChanged()
 libKWaylandClient.so.6:KWayland::Client::PlasmaWindow::destroy()
