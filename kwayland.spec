@@ -9,7 +9,7 @@
 #
 Name     : kwayland
 Version  : 6.2.5
-Release  : 96
+Release  : 97
 URL      : https://download.kde.org/stable/plasma/6.2.5/kwayland-6.2.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.2.5/kwayland-6.2.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.2.5/kwayland-6.2.5.tar.xz.sig
